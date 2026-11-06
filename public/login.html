@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-container">
+        <div class="login-logo">🎓</div>
+
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Student Management System</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter admin username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn-primary login-btn">
+                Login as Admin
+            </button>
+
+            <p id="loginMessage" class="message"></p>
+        </form>
+
+        <p class="login-footer">
+            Authorized Administrator Access Only
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

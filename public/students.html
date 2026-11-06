@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students | SMS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-icon">🎓</span>
+                <div>
+                    <h2>SMS</h2>
+                    <small>Admin Panel</small>
+                </div>
+            </div>
+
+            <nav>
+                <a href="dashboard.html" class="nav-link">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="students.html" class="nav-link active">
+                    <span>👥</span> Students
+                </a>
+            </nav>
+
+            <button id="logoutBtn" class="logout-btn">
+                ↪ Logout
+            </button>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Student Records</h1>
+                    <p>Manage your student information</p>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="avatar">A</div>
+                    <div>
+                        <strong id="adminName">Administrator</strong>
+                        <small>Admin</small>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-card">
+
+                <div class="section-header">
+                    <div>
+                        <h2>All Students</h2>
+                        <p>Add and manage student records</p>
+                    </div>
+
+                    <button id="showFormBtn" class="btn-primary">
+                        + Add Student
+                    </button>
+                </div>
+
+                <div id="studentFormContainer" class="student-form-container hidden">
+
+                    <h3 id="formTitle">Add New Student</h3>
+
+                    <form id="studentForm">
+
+                        <input type="hidden" id="recordId">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="studentId">Student ID *</label>
+                                <input
+                                    type="text"
+                                    id="studentId"
+                                    placeholder="e.g. 2026-001"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    placeholder="Enter full name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="course">Course *</label>
+                                <select id="course" required>
+                                    <option value="">Select Course</option>
+                                    <option value="BSIT">BSIT</option>
+                                    <option value="BSCS">BSCS</option>
+                                    <option value="BSHM">BSHM</option>
+                                    <option value="BSED">BSED</option>
+                                    <option value="BEED">BEED</option>
+                                    <option value="BSBA">BSBA</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yearLevel">Year Level *</label>
+                                <select id="yearLevel" required>
+                                    <option value="">Select Year</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactNumber">Contact Number</label>
+                                <input
+                                    type="text"
+                                    id="contactNumber"
+                                    placeholder="Enter contact number"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter email address"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                Save Student
+                            </button>
+
+                            <button
+                                type="button"
+                                id="cancelFormBtn"
+                                class="btn-secondary"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="table-toolbar">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by name or student ID..."
+                    >
+
+                    <select id="filterCourse">
+                        <option value="">All Courses</option>
+                        <option value="BSIT">BSIT</option>
+                        <option value="BSCS">BSCS</option>
+                        <option value="BSHM">BSHM</option>
+                        <option value="BSED">BSED</option>
+                        <option value="BEED">BEED</option>
+                        <option value="BSBA">BSBA</option>
+                    </select>
+
+                    <select id="filterYear">
+                        <option value="">All Year Levels</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>Course</th>
+                                <th>Year Level</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentTableBody">
+                            <tr>
+                                <td colspan="7" class="loading">
+                                    Loading student records...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <p id="studentMessage" class="message"></p>
+
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

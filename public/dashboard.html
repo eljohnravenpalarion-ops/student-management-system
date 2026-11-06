@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <main class="dashboard">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon"><i data-lucide="graduation-cap"></i></div>
+                <div>
+                    <h1>Student Management</h1>
+                    <p>Administrator Dashboard</p>
+                </div>
+            </div>
+
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">ADMIN OVERVIEW</p>
+                <h2>Good day, Administrator!</h2>
+                <p>Here's what's happening with your student records today.</p>
+            </div>
+            <div class="welcome-icon"><i data-lucide="graduation-cap"></i></div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <div class="stat-icon purple"><i data-lucide="users"></i></div>
+                <p>Total Students</p>
+                <h2 id="totalStudents">0</h2>
+                <span>Registered students</span>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon blue"><i data-lucide="book-open"></i></div>
+                <p>Total Courses</p>
+                <h2 id="totalCourses">0</h2>
+                <span>Courses represented</span>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon green"><i data-lucide="graduation-cap"></i></div>
+                <p>Year Levels</p>
+                <h2 id="totalYears">0</h2>
+                <span>Year levels represented</span>
+            </article>
+        </section>
+
+        <section class="records-card">
+            <div class="records-heading">
+                <div>
+                    <h2>Student Records</h2>
+                    <p>Manage and organize student information.</p>
+                </div>
+
+                <button class="primary-btn" id="showFormBtn" type="button">
+                    <i data-lucide="plus"></i>
+                    Add Student
+                </button>
+            </div>
+
+            <section class="form-panel" id="studentFormContainer" hidden>
+                <div class="form-heading">
+                    <div>
+                        <h3 id="formTitle">Add New Student</h3>
+                        <p>Enter the student's information below.</p>
+                    </div>
+                    <button class="icon-btn" id="cancelFormBtn" type="button" aria-label="Close form">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+
+                <form id="studentForm">
+                    <input type="hidden" id="recordId">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="studentId">Student ID</label>
+                            <input id="studentId" name="student_id" required placeholder="Enter student ID">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input id="fullName" name="full_name" required placeholder="Enter full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Course</label>
+                            <select id="course" name="course" required>
+                                <option value="">Select course</option>
+                                <option value="BSIT">BSIT</option>
+                                <option value="BSCS">BSCS</option>
+                                <option value="BSBA">BSBA</option>
+                                <option value="BSED">BSED</option>
+                                <option value="BEED">BEED</option>
+                                <option value="BSHM">BSHM</option>
+                                <option value="BSTM">BSTM</option>
+                                <option value="BSCRIM">BSCRIM</option>
+                                <option value="BSAG">BSAG</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="yearLevel">Year Level</label>
+                            <select id="yearLevel" name="year_level" required>
+                                <option value="">Select year level</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="5th Year">5th Year</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactNumber">Contact Number</label>
+                            <input id="contactNumber" name="contact_number" placeholder="Enter contact number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input id="email" name="email" type="email" placeholder="Enter email address">
+                        </div>
+                    </div>
+
+                    <p id="studentMessage" class="form-message" role="status"></p>
+
+                    <div class="form-actions">
+                        <button class="secondary-btn" id="cancelFormBtnBottom" type="button">Cancel</button>
+                        <button class="primary-btn" type="submit" id="saveStudentBtn">Save Student</button>
+                    </div>
+                </form>
+            </section>
+
+            <div class="toolbar">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input id="searchInput" type="search" placeholder="Search students...">
+                </div>
+
+                <select id="filterCourse" aria-label="Filter by course">
+                    <option value="">All Courses</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="BSBA">BSBA</option>
+                    <option value="BSED">BSED</option>
+                    <option value="BEED">BEED</option>
+                    <option value="BSHM">BSHM</option>
+                    <option value="BSTM">BSTM</option>
+                    <option value="BSCRIM">BSCRIM</option>
+                    <option value="BSAG">BSAG</option>
+                </select>
+
+                <select id="filterYear" aria-label="Filter by year level">
+                    <option value="">All Year Levels</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                    <option value="5th Year">5th Year</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Course</th>
+                            <th>Year Level</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                        <tr>
+                            <td colspan="7" class="table-message">Loading students...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-footer">
+                <span id="studentCount">Showing 0 of 0 students</span>
+            </div>
+        </section>
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+</html>

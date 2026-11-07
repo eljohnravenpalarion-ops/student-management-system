@@ -12,19 +12,18 @@ const {
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve frontend files from public folder
+
 app.use(express.static(path.join(__dirname, "public")));
 
-// Open dashboard directly
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
-// GET ALL STUDENTS
+
 app.get("/api/students", async (req, res) => {
     try {
         const students = await all(
@@ -41,7 +40,7 @@ app.get("/api/students", async (req, res) => {
     }
 });
 
-// ADD STUDENT
+
 app.post("/api/students", async (req, res) => {
     try {
         const {
@@ -97,7 +96,7 @@ app.post("/api/students", async (req, res) => {
     }
 });
 
-// UPDATE STUDENT
+
 app.put("/api/students/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -167,7 +166,6 @@ app.put("/api/students/:id", async (req, res) => {
     }
 });
 
-// DELETE STUDENT
 app.delete("/api/students/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -195,7 +193,6 @@ app.delete("/api/students/:id", async (req, res) => {
     }
 });
 
-// START SERVER AFTER DATABASE INITIALIZATION
 initializeDatabase()
     .then(() => {
         app.listen(PORT, () => {

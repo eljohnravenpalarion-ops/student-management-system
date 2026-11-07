@@ -27,9 +27,7 @@ const formTitle = document.getElementById("formTitle");
 const studentMessage = document.getElementById("studentMessage");
 const saveStudentBtn = document.getElementById("saveStudentBtn");
 
-// ========================================
-// LOAD STUDENTS
-// ========================================
+
 
 async function loadStudents() {
     tableBody.innerHTML = `
@@ -69,9 +67,7 @@ async function loadStudents() {
     }
 }
 
-// ========================================
-// DASHBOARD STATISTICS
-// ========================================
+
 
 function updateDashboardStats() {
     const courses = new Set(
@@ -91,9 +87,7 @@ function updateDashboardStats() {
     totalYearsElement.textContent = years.size;
 }
 
-// ========================================
-// DISPLAY STUDENTS
-// ========================================
+
 
 function displayStudents() {
     const searchTerm = searchInput.value.toLowerCase().trim();
@@ -173,9 +167,7 @@ function displayStudents() {
     }
 }
 
-// ========================================
-// ESCAPE HTML
-// ========================================
+
 
 function escapeHTML(value) {
     return String(value)
@@ -186,9 +178,6 @@ function escapeHTML(value) {
         .replaceAll("'", "&#039;");
 }
 
-// ========================================
-// OPEN / CLOSE FORM
-// ========================================
 
 function openStudentForm() {
     formContainer.hidden = false;
@@ -207,9 +196,7 @@ function closeStudentForm() {
     studentMessage.textContent = "";
 }
 
-// ========================================
-// ADD / UPDATE STUDENT
-// ========================================
+
 
 studentForm.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -282,9 +269,6 @@ studentForm.addEventListener("submit", async function (event) {
     }
 });
 
-// ========================================
-// EDIT STUDENT
-// ========================================
 
 function editStudent(id) {
     const student = allStudents.find(
@@ -311,9 +295,7 @@ function editStudent(id) {
     openStudentForm();
 }
 
-// ========================================
-// DELETE STUDENT
-// ========================================
+
 
 async function deleteStudent(id) {
     const confirmed = confirm(
@@ -348,9 +330,7 @@ async function deleteStudent(id) {
     }
 }
 
-// ========================================
-// EVENT LISTENERS
-// ========================================
+
 
 document.getElementById("showFormBtn").addEventListener("click", function () {
     studentForm.reset();
@@ -370,9 +350,6 @@ searchInput.addEventListener("input", displayStudents);
 filterCourse.addEventListener("change", displayStudents);
 filterYear.addEventListener("change", displayStudents);
 
-// ========================================
-// INITIALIZE
-// ========================================
 
 if (window.lucide) {
     lucide.createIcons();
